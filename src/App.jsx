@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+
 function App() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
@@ -10,44 +11,51 @@ function App() {
 
   const handleAdd = () => {
     if (input.trim() === "") return;
-    setTodos([...todos, input]);
-    setInput(""); 
+    setTodos([...todos, { text: input, completed: false }]);
+    setInput("");
   };
-  const handleDelete=(index)=>{
-    const newTodos=todos.filter((_,i)=> i!==index);
-    setTodos(newTodos);
-    console.log(newTodos);
-  }
 
-  
+  const handleDelete = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  const handleComplete = (index) => {
+    setTodos(
+      todos.map((task, i) =>
+        i === index ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
 
   return (
-    <div>
-      <h1>Task Manager</h1>
-      <div className='container'>
-        <input
-          type='text'
-          placeholder='Add a new task'
-          value={input}
-          onChange={handleChange}
-        />
-        <button onClick={handleAdd}>Add</button>
+    <div className="app">
+      <div className="task-box">
+        <h1>Task Manager</h1>
+        <div className="input-section">
+          <input
+            type="text"
+            placeholder="What needs to be done?"
+            value={input}
+            onChange={handleChange}
+          />
+          <button onClick={handleAdd}>Add Task</button>
+        </div>
+        <ul>
+          {todos.map((task, index) => (
+            <li key={index}>
+              <span className="check-icon" onClick={() => handleComplete(index)}>
+                ✓
+              </span>
+              <span className={task.completed ? "completed" : ""}>
+                {task.text}
+              </span>
+              <button className="delete" onClick={() => handleDelete(index)}>
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul>
-
-        {todos.map((task, index) => (
-
-          <div key={index}>
-            
-          <li>{task}</li>
-           
-          <button onClick={()=>handleDelete(index)}>Delete</button> 
-
-        
-          </div>
-        
-        ))}
-      </ul> 
     </div>
   );
 }
