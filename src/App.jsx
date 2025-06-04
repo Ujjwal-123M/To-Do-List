@@ -18,11 +18,7 @@ function App() {
     setTodos(newTodos);
     console.log(newTodos);
   }
-  const handleComplete=(index)=>{
-    const newTodos=todos.map((task,i)=> i===index?{...task,completed:true}:task);
-    setTodos(newTodos);
-    console.log(newTodos);
-  }
+
   
 
   return (
