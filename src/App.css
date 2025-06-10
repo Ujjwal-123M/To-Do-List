@@ -2,3 +2,85 @@ body {
   background-color: #eaf6fa;
   font-family: Arial, sans-serif;
 }
+.check-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: green;
+  margin-right: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+
+.app {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.task-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a73e8;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #1a73e8;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1a73e8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.delete {
+  background-color: #e53935;
+  margin-left: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px dotted #ccc;
+}
+
+li span:first-child {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
